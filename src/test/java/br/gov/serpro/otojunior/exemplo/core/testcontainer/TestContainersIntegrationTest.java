@@ -6,7 +6,6 @@ package br.gov.serpro.otojunior.exemplo.core.testcontainer;
 import static br.gov.serpro.otojunior.exemplo.core.testcontainer.TestContainersConfig.POSTGRES;
 import static java.lang.Boolean.FALSE;
 import static java.lang.Boolean.TRUE;
-import java.util.function.Supplier;
 import org.springframework.context.annotation.Import;
 import org.springframework.test.context.DynamicPropertyRegistry;
 import org.springframework.test.context.DynamicPropertySource;
