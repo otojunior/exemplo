@@ -9,7 +9,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.data.jpa.test.autoconfigure.DataJpaTest;
 import org.springframework.test.context.jdbc.Sql;
-import br.gov.serpro.otojunior.exemplo.core.testcontainer.TestContainer;
+import br.gov.serpro.otojunior.exemplo.core.testcontainer.TestContainersIntegrationTest;
 
 /**
  * Classe de teste para a classe ProdutoRepositorio.
@@ -18,7 +18,7 @@ import br.gov.serpro.otojunior.exemplo.core.testcontainer.TestContainer;
  */
 @DataJpaTest
 @DisplayName("Repositório de Produto")
-class ProdutoRepositorioTest extends TestContainer {
+class ProdutoRepositorioTest extends TestContainersIntegrationTest {
     @Autowired
     private ProdutoRepositorio produtoRepositorio;
     
