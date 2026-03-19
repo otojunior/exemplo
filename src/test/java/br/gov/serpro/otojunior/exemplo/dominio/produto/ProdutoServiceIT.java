@@ -7,9 +7,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.annotation.Rollback;
 import org.springframework.test.context.bean.override.mockito.MockitoSpyBean;
-import org.springframework.transaction.annotation.Transactional;
 import br.gov.serpro.otojunior.exemplo.core.testcontainer.TestContainersIntegrationTest;
 
 /**
@@ -17,8 +15,6 @@ import br.gov.serpro.otojunior.exemplo.core.testcontainer.TestContainersIntegrat
  */
 @SpringBootTest
 @TestContainersIntegrationTest
-@Transactional
-@Rollback
 class ProdutoServiceIT {
     @MockitoSpyBean
     private ProdutoRepositorio produtoRepositorio;
