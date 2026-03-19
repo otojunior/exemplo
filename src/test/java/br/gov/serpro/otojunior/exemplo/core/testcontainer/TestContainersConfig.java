@@ -3,6 +3,7 @@
  */
 package br.gov.serpro.otojunior.exemplo.core.testcontainer;
 
+import org.springframework.boot.testcontainers.service.connection.ServiceConnection;
 import org.springframework.boot.test.context.TestConfiguration;
 import org.springframework.context.annotation.Bean;
 import org.testcontainers.postgresql.PostgreSQLContainer;
@@ -14,26 +15,17 @@ import org.testcontainers.postgresql.PostgreSQLContainer;
  */
 @TestConfiguration
 public class TestContainersConfig {
-    public static final PostgreSQLContainer POSTGRES;
-
-    /*
-     * Inicializa o container PostgreSQL antes de qualquer teste ser executado.
-     */
-    static {
-        POSTGRES = new PostgreSQLContainer("postgres:alpine")
-            .withDatabaseName("test")
-            .withUsername("test")
-            .withPassword("test");
-        POSTGRES.start();
-    }
-
     /**
      * Bean do container PostgreSQL para testes de integração.
      * O método stop() será chamado automaticamente ao final dos testes.
      * @return o container PostgreSQL em execução
      */
     @Bean(destroyMethod = "stop")
+    @ServiceConnection
     PostgreSQLContainer postgresContainer() {
-        return POSTGRES;
+        return new PostgreSQLContainer("postgres:alpine")
+            .withDatabaseName("test")
+            .withUsername("test")
+            .withPassword("test");
     }
 }
