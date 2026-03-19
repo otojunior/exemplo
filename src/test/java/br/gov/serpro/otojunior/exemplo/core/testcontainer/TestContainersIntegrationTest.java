@@ -3,15 +3,22 @@
  */
 package br.gov.serpro.otojunior.exemplo.core.testcontainer;
 
+import static java.lang.annotation.ElementType.TYPE;
+import static java.lang.annotation.RetentionPolicy.RUNTIME;
+import java.lang.annotation.Documented;
+import java.lang.annotation.Inherited;
+import java.lang.annotation.Retention;
+import java.lang.annotation.Target;
 import org.springframework.context.annotation.Import;
 import org.springframework.test.context.ActiveProfiles;
 
 /**
- * Classe base para testes de integração utilizando TestContainers.
- * @author Oto Soares Coelho Junior (oto.coelho-junior@serpro.gov.br)
- * @since 19/03/2026 - SERPRO 2026
+ * 
  */
+@Documented
+@Retention(RUNTIME)
+@Target(TYPE)
+@Inherited
 @ActiveProfiles("test")
 @Import(TestContainersConfig.class)
-public abstract class TestContainersIntegrationTest {
-}
+public @interface TestContainersIntegrationTest { }

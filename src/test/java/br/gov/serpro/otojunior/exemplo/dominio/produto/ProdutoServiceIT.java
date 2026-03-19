@@ -16,9 +16,10 @@ import br.gov.serpro.otojunior.exemplo.core.testcontainer.TestContainersIntegrat
  * 
  */
 @SpringBootTest
+@TestContainersIntegrationTest
 @Transactional
 @Rollback
-class ProdutoServiceIT extends TestContainersIntegrationTest {
+class ProdutoServiceIT {
     @MockitoSpyBean
     private ProdutoRepositorio produtoRepositorio;
     

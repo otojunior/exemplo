@@ -17,8 +17,9 @@ import br.gov.serpro.otojunior.exemplo.core.testcontainer.TestContainersIntegrat
  * @since 18/03/2026 - SERPRO 2026
  */
 @DataJpaTest
+@TestContainersIntegrationTest
 @DisplayName("Repositório de Produto")
-class ProdutoRepositorioIT extends TestContainersIntegrationTest {
+class ProdutoRepositorioIT {
     @Autowired
     private ProdutoRepositorio produtoRepositorio;
     

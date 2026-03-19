@@ -3,8 +3,8 @@
  */
 package br.gov.serpro.otojunior.exemplo.core.testcontainer;
 
-import org.springframework.boot.testcontainers.service.connection.ServiceConnection;
 import org.springframework.boot.test.context.TestConfiguration;
+import org.springframework.boot.testcontainers.service.connection.ServiceConnection;
 import org.springframework.context.annotation.Bean;
 import org.testcontainers.postgresql.PostgreSQLContainer;
 
@@ -20,8 +20,9 @@ public class TestContainersConfig {
      * O método stop() será chamado automaticamente ao final dos testes.
      * @return o container PostgreSQL em execução
      */
-    @Bean(destroyMethod = "stop")
+    @Bean
     @ServiceConnection
+    @SuppressWarnings("resource")
     PostgreSQLContainer postgresContainer() {
         return new PostgreSQLContainer("postgres:alpine")
             .withDatabaseName("test")
