@@ -18,10 +18,6 @@ import org.springframework.test.context.DynamicPropertySource;
  */
 @Import(TestContainersConfig.class)
 public abstract class TestContainersIntegrationTest {
-    private static final Supplier<Object> SIM = TRUE::toString;
-    private static final Supplier<Object> NAO = FALSE::toString;
-    private static final Supplier<Object> DDL_AUTO = () -> "create-only";
-    
     /**
      * Sobrescreve as propriedades de configuração para usar o container PostgreSQL
      * e ajustar as configurações do JPA e P6Spy.
@@ -33,13 +29,13 @@ public abstract class TestContainersIntegrationTest {
         registry.add("spring.datasource.username", POSTGRES::getUsername);
         registry.add("spring.datasource.password", POSTGRES::getPassword);
         
-        registry.add("spring.jpa.open-in-view", NAO);
-        registry.add("spring.jpa.show-sql", NAO);
-        registry.add("spring.jpa.properties.hibernate.format_sql", SIM);
-        registry.add("spring.jpa.hibernate.ddl-auto", DDL_AUTO);
+        registry.add("spring.jpa.open-in-view", FALSE::toString);
+        registry.add("spring.jpa.show-sql", FALSE::toString);
+        registry.add("spring.jpa.properties.hibernate.format_sql", TRUE::toString);
+        registry.add("spring.jpa.hibernate.ddl-auto", () -> "create-only");
         
-        registry.add("decorator.datasource.p6spy.enable-logging", SIM);
-        registry.add("decorator.datasource.p6spy.multiline", SIM);
+        registry.add("decorator.datasource.p6spy.enable-logging", TRUE::toString);
+        registry.add("decorator.datasource.p6spy.multiline", TRUE::toString);
         registry.add("decorator.datasource.p6spy.logging", () -> "slf4j");
         registry.add("decorator.datasource.p6spy.log-file", () -> "test-spy.log");
     }
